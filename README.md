@@ -1,0 +1,2 @@
+穷举算法和无损转化算法的主程序分别为main_qiongju和main_wusunzhuanhua。
+运行环境要求内存不低于32GB，matlab 2010以上。
