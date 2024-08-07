@@ -1,4 +1,4 @@
-%%主程序,修改于2024年7月10日
+%%穷举算法主程序,修改于2024年8月8日
 clear
 SolarData=xlsread('Solar Data.xls','sheet1');%光数据
 SolarData(SolarData>1)=1;

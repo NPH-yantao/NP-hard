@@ -71,7 +71,9 @@ if fangan==1
 end
 
 QL=zeros(length(find(QL00==0))+1,length(QL00));%%初始化动态切负荷状态序列
-QL=QL+QL00;
+for i=1:size(QL,1)
+QL(i,:)=QL(i,:)+QL00;
+end
 QL0=find(QL00==0);
 if ~isempty(QL0)
 for i=1:length(QL0)
@@ -80,7 +82,9 @@ end
 end
 
 QG=zeros(length(find(QG00==0))+1,length(QG00));%%初始化动态切电源状态序列
-QG=QG+QG00;
+for i=1:size(QG,1)
+QG(i,:)=QG(i,:)+QG00;
+end
 QG0=find(QG00==0);
 if ~isempty(QG0)
 for i=1:length(QG0)
