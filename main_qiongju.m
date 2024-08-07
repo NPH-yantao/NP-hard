@@ -14,22 +14,22 @@ ES_pingheng=5;
 PV00=[8 10 6 2]; 
 ES00=[1 1 1];
 t=10;%%故障起始时刻
-TTR=5;%%故障持续时间
+TTR=4;%%故障持续时间
 RX=xlsread('RX.xlsx');
 %%负荷大小
-shu_fangan0=7;
+shu_fangan0=10;
 mubiao=zeros(1,shu_fangan0);
 fengxian=zeros(5,shu_fangan0);
 simulation=zeros(1,shu_fangan0);
 shoulian=0;
 bushoulian=0;
 xxx=[];
- for   fangan=shu_fangan0:shu_fangan0
+ for   fangan=1:shu_fangan0
 
  %%非平衡节点储能输入
 ES=ES00;
 PV=PV00; 
-LP=xlsread('L24')*2;%%*24
+LP=xlsread('L24')*2;
 %%初始化所有方案的负荷状态
 fangan_chushihua
 %%初始化所有状态组合的潮流
@@ -70,5 +70,4 @@ xxx=[xxx;zeros(1,TTR+1)];
 haoshi2=clock;
 simulation(fangan)=etime(haoshi2,haoshi1);
  end
-%  format long
  jieguo=[roundn(simulation,-2); roundn(mubiao,-2); roundn(fengxian*100,-2)];
