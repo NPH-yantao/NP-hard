@@ -37,7 +37,7 @@ if ES(j)==0
          P_ES(j)=0;
         state_SOC(j)=1;   
 else
-        [~,P_ES(j)]=cod_strategy_test1(ES(j)*1000,Pr(j)*1000,P_dgl(j),(state_ES(j+1,es)-1)/(shu_ES(j)-1));
+        [~,P_ES(j)]=ES_strategy(ES(j)*1000,Pr(j)*1000,P_dgl(j),(state_ES(j+1,es)-1)/(shu_ES(j)-1));
         state_SOC(j)=ceil((state_ES(j+1,es)-1)/(shu_ES(j)-1)+P_ES(j)/1000/ES(j))*(shu_ES(j)-1)+1;
          if state_SOC(j)==1
             state_SOC(j)=2;
