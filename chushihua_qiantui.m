@@ -58,7 +58,7 @@ end
 
    if state_fengxian(i,es,k-t+1)~=10^10 
   
- [MPS(i,es,k-t+1),Pcod]=cod_strategy_test1(ES_pingheng,Pr_pingheng,state_fengxian(i,es,k-t+1),state_ES(1,es)/(ES_pingheng/duan_ES));  
+ [MPS(i,es,k-t+1),Pcod]=ES_strategy(ES_pingheng,Pr_pingheng,state_fengxian(i,es,k-t+1),state_ES(1,es)/(ES_pingheng/duan_ES));  
                       if MPS(i,es,k-t+1)==0
                             
  soc_pingheng=ceil((state_ES(1,es)/(ES_pingheng/duan_ES)+Pcod/ES_pingheng)*ES_pingheng/duan_ES);
