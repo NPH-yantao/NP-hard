@@ -13,29 +13,30 @@ function  [mubiao,fengxian,xxx]=bianlijisuan1(TTR,ES_pingheng,duan_ES,MSOC,pv_st
  zong=shu_NP^TTR;  
  zong1=0;
 jishu=0;
-% jishu1=0;
-%   gailvJI=ones(zong,1);
-%   state_zuhe=zeros(TTR,zong);
-%   while (tongji<=zong)
-%            yushu=tongji;    
-%            chushu=zong;
-%     for j=1:TTR
-%         chushu=chushu/shu_NP;
-%          state_zuhe(j,tongji)=ceil(yushu/chushu);
-%          if mod(yushu,chushu)~=0
-%          yushu=mod(yushu,chushu);
-%          else
-%          yushu=chushu;
-%          end
-%     end
-%       tongji=tongji+1;
-%   end
-%              E_f0=zeros(zong,1);
-%              p_h10=zeros(zong,1);
-%              p_h20=zeros(zong,1);
-% %              p_h30=zeros(zong,1);
-%              p_h40=zeros(zong,1);
-%              p_g10=zeros(zong,1);
+tongji=1;
+jishu1=0;
+  gailvJI=ones(zong,1);
+  state_zuhe=zeros(TTR,zong);
+  while (tongji<=zong)
+           yushu=tongji;    
+           chushu=zong;
+    for j=1:TTR
+        chushu=chushu/shu_NP;
+         state_zuhe(j,tongji)=ceil(yushu/chushu);
+         if mod(yushu,chushu)~=0
+         yushu=mod(yushu,chushu);
+         else
+         yushu=chushu;
+         end
+    end
+      tongji=tongji+1;
+  end
+             E_f0=zeros(zong,1);
+             p_h10=zeros(zong,1);
+             p_h20=zeros(zong,1);
+             p_h30=zeros(zong,1);
+             p_h40=zeros(zong,1);
+             p_g10=zeros(zong,1);
                for ii=1:zong %%TTR=1µÄ³õÊ¼Ê±¿Ì
            yushu=ii;    
            chushu=zong;
@@ -56,7 +57,7 @@ jishu=0;
                  E_f=zeros(1,TTR);
                  p_h1=zeros(1,TTR);
                  p_h2=zeros(1,TTR);
-%                  p_h3=zeros(1,TTR);
+                 p_h3=zeros(1,TTR);
                  p_h4=zeros(1,TTR);
                  p_g1=zeros(1,TTR);
                    gailvJI=1;
@@ -101,13 +102,13 @@ jishu=0;
                     
                      if MSOC(T,soc,tt,xulie_qiefuhe(tt+1),xulie_qiguang(tt+1))~=0
                  soc=MSOC(T,soc,tt,xulie_qiefuhe(tt+1),xulie_qiguang(tt+1));  
-%                   paixu(tt)= state_ES(1,soc);
-% %                       if state_ES(1,soc)/(ES_pingheng/duan_ES)>=...
-% %                                0.8||state_ES(1,soc)/(ES_pingheng/duan_ES)<=0.2
-% %                      p_h3(tt)= 1;        
-% %                       end 
-%                      else
-%                   paixu(tt)= 0;
+                  paixu(tt)= state_ES(1,soc);
+                      if state_ES(1,soc)/(ES_pingheng/duan_ES)>=...
+                               0.8||state_ES(1,soc)/(ES_pingheng/duan_ES)<=0.2
+                     p_h3(tt)= 1;        
+                      end 
+                     else
+                  paixu(tt)= 0;
                      end
                  else
                      soc=10^10;
@@ -144,7 +145,7 @@ jishu=0;
             if tt>1
             p_h1(tt) =p_h1(tt-1);
             p_h2(tt) =p_h2(tt-1);
-%             p_h3(tt) =p_h3(tt-1);
+            p_h3(tt) =p_h3(tt-1);
             p_h4(tt) =p_h4(tt-1);
             p_g1(tt) =p_g1(tt-1);
             end
@@ -154,18 +155,18 @@ jishu=0;
              if gailvJI>0
                  zong1=zong1+1;
                  gailvJI1(zong1)=gailvJI;
-%              paixu(TTR+1)=gailvJI(tongji);
-%              xxx=[xxx;paixu];
+             paixu(TTR+1)=gailvJI;
+             xxx=[xxx;paixu];
              jishu=jishu+gailvJI;
-%              if paixu(1)~=0
-%                  jishu1=jishu1+gailvJI(tongji);
-%              end
+             if paixu(1)~=0
+                 jishu1=jishu1+gailvJI;
+             end
              E_f0(zong1)=sum(E_f);
               p_h10(zong1)=(1-prod(ones(1,TTR)-p_h1));
              p_h20(zong1)=(1-prod(ones(1,TTR)-p_h2));
-%              if paixu(1)~=0
-%              p_h30(tongji)=(1-prod(ones(1,TTR)-p_h3));
-%              end
+             if paixu(1)~=0
+             p_h30(zong1)=(1-prod(ones(1,TTR)-p_h3));
+             end
              p_h40(zong1)=(1-prod(ones(1,TTR)-p_h4));
              p_g10(zong1)=(1-prod(ones(1,TTR)-p_g1));
              end
@@ -177,7 +178,7 @@ jishu=0;
                 mubiao=mubiao+E_f0(i)*gailvJI1(i)/jishu;
                 fengxian(1)=fengxian(1)+p_h10(i)*gailvJI1(i)/jishu;
                 fengxian(2)=fengxian(2)+p_h20(i)*gailvJI1(i)/jishu;
-%                 fengxian(3)=fengxian(3)+p_h30(i)*gailvJI(i)/jishu1;
+                fengxian(3)=fengxian(3)+p_h30(i)*gailvJI1(i)/jishu;
                 fengxian(4)=fengxian(4)+p_h40(i)*gailvJI1(i)/jishu;
                 fengxian(5)=fengxian(5)+p_g10(i)*gailvJI1(i)/jishu;
                end
