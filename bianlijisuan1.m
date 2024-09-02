@@ -13,24 +13,8 @@ function  [mubiao,fengxian,xxx]=bianlijisuan1(TTR,ES_pingheng,duan_ES,MSOC,pv_st
  zong=shu_NP^TTR;  
  zong1=0;
 jishu=0;
-tongji=1;
 jishu1=0;
   gailvJI=ones(zong,1);
-  state_zuhe=zeros(TTR,zong);
-  while (tongji<=zong)
-           yushu=tongji;    
-           chushu=zong;
-    for j=1:TTR
-        chushu=chushu/shu_NP;
-         state_zuhe(j,tongji)=ceil(yushu/chushu);
-         if mod(yushu,chushu)~=0
-         yushu=mod(yushu,chushu);
-         else
-         yushu=chushu;
-         end
-    end
-      tongji=tongji+1;
-  end
              E_f0=zeros(zong,1);
              p_h10=zeros(zong,1);
              p_h20=zeros(zong,1);
