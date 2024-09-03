@@ -14,13 +14,6 @@ function  [mubiao,fengxian,xxx]=bianlijisuan1(TTR,ES_pingheng,duan_ES,MSOC,pv_st
  zong1=0;
 jishu=0;
 jishu1=0;
-  gailvJI=ones(zong,1);
-             E_f0=zeros(zong,1);
-             p_h10=zeros(zong,1);
-             p_h20=zeros(zong,1);
-             p_h30=zeros(zong,1);
-             p_h40=zeros(zong,1);
-             p_g10=zeros(zong,1);
                for ii=1:zong %%TTR=1µÄ³õÊ¼Ê±¿Ì
            yushu=ii;    
            chushu=zong;
